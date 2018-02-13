@@ -13,17 +13,24 @@ public class PlayerController : MonoBehaviour {
     public Transform groundCheck;
     public LayerMask whatIsGround;
     private bool isGrounded = false;
-   
+
+    //анимация
+    private Animator animator;
 
     void Start () {
-       
-	}
+        animator = GetComponent<Animator>();
+    }
 	
 
 	void FixedUpdate() {
+        State = CharState.Stoping;
         CheckGround();
         if (Convert.ToBoolean(Input.GetAxis("Horizontal")))Run();
         if (isGrounded&&Input.GetButtonDown("Jump"))Jump();
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            State = CharState.Atack;
+        };
       
     }
 
@@ -39,6 +46,10 @@ public class PlayerController : MonoBehaviour {
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+        if (isGrounded)
+        {
+            State = CharState.Run;
+        }
     }
 
     private void Jump()
@@ -51,5 +62,20 @@ public class PlayerController : MonoBehaviour {
       //GameObject ground = GetComponentInChildren<GameObject>();
       isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position,0.2F, whatIsGround);
 
+    }
+
+
+
+    private CharState State
+    {
+        get { return (CharState)animator.GetInteger("State"); }
+        set { animator.SetInteger("State", (int)value); }
+    }
+
+    public enum CharState
+    {
+        Stoping,
+        Run,
+        Atack
     }
 }

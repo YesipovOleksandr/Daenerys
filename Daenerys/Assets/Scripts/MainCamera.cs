@@ -13,8 +13,8 @@ public class MainCamera : MonoBehaviour {
     private void FixedUpdate()
     {
         Vector3 position = target.position;
-        position.z = -20.0F;
-        position.y =+1.2F;
+        position.z = -10.0F;
+        position.y =+1F;
         transform.position = Vector3.Lerp(transform.position, position, speed * Time.deltaTime);
    
     }

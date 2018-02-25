@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     public float speed = 3.0F;
     public float jump = 5.0F;
 
+    private Boolean side;
 
     //проверка на земеле или нет 
     public Transform groundCheck;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     //анимация
     private Animator animator;
+    private SpriteRenderer mySpriteRenderer;
 
     //огненный шар
     FireBallController FireBall;
@@ -30,10 +32,12 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         animator = GetComponent<Animator>();
-  
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+
     }
     private void Awake()
     {
+     
         FireBall = Resources.Load<FireBallController>("FireBall");
     }
 
@@ -44,8 +48,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-         State = CharState.stoping;
-   
+        
+     State = CharState.stoping;
+     
         CheckGround();
         if (Convert.ToBoolean(CnInputManager.GetAxis("Horizontal")))Run();
         if (isGrounded&& CnInputManager.GetButtonDown("Jump"))Jump();
@@ -57,16 +62,8 @@ public class PlayerController : MonoBehaviour {
     {
         position = new Vector3(CnInputManager.GetAxis("Horizontal"), 0f);
         transform.position += position * speed * Time.deltaTime;
-        if (position.x < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        
-            State = CharState.run;
+        mySpriteRenderer.flipX = position.x < 0.0F;    
+        State = CharState.run;
         
     }
 
@@ -78,11 +75,14 @@ public class PlayerController : MonoBehaviour {
 
     private void Attack()
     {
+       
         State = CharState.atack;
         Vector3 position = transform.position;
-        position.y += 1F;
-        FireBallController newFire=Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
-        newFire.Direction = newFire.transform.right * position.x*2;
+        position.y += 1.5F;
+        //position.z = -1.5F;
+        FireBallController newFire = Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
+        newFire.Direction = newFire.transform.right*(mySpriteRenderer.flipX ? -1.0F : 1.0F);
+                 
 
     }
 

@@ -1,42 +1,67 @@
-﻿using System.Collections;
+﻿using CnControls;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum EnemyState
+{
+    run,
+    damage
 
+}
 public class EnemyController : MonoBehaviour {
 
     Vector2 vel = new Vector2(-2f, 0);
+    private int lifes = 3;
+    private Animator animator;
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+    void Start()
+    {
+        State = EnemyState.run;
+        animator = GetComponent<Animator>();
+
+    }
+
+    private EnemyState State
+    {
+        get { return (EnemyState)animator.GetInteger("State"); }
+        set { animator.SetInteger("State", (int)value); }
+    }
+
+
+    void FixedUpdate()
+    {
+        //State = EnemyState.run;
+        gameObject.GetComponentInChildren<Rigidbody2D>().velocity = vel;
+    }
 
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerStay2D(Collider2D other)
     {
         FireBallController fireBall = other.GetComponent<FireBallController>();
         if (fireBall)
         {
-            Destroy(gameObject);
+            lifes--;
+            State = EnemyState.damage;
             Destroy(other.gameObject);
+            if (lifes <= 0)
+            {
+                Destroy(gameObject);
+            }
+        
+            print(lifes);
          
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collider)
-    {
-        PlayerController playerController = collider.GetComponent<PlayerController>();
+   
+    
+   
 
-        if (playerController)
-        {
-            gameObject.GetComponentInChildren<Rigidbody2D>().velocity = vel;
-        }
-
-    }
+    
 
 }

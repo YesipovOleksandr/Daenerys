@@ -28,23 +28,29 @@ public class PlayerController : MonoBehaviour {
 
     //огненный шар
     FireBallController FireBall;
-
-
-    void Start () {
-        animator = GetComponent<Animator>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
-
-    }
-    private void Awake()
-    {
-     
-        FireBall = Resources.Load<FireBallController>("FireBall");
-    }
+    //время между выстрелами 
+   public float shotsTime;
+   private float shotsTimeCounter;
 
     private CharState State
     {
         get { return (CharState)animator.GetInteger("State"); }
         set { animator.SetInteger("State", (int)value); }
+    }
+
+    void Start () {
+        animator = GetComponent<Animator>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        shotsTimeCounter = 0;
+       
+
+    }
+  
+ 
+    private void Awake()
+    {
+        
+        FireBall = Resources.Load<FireBallController>("FireBall");
     }
 
     void FixedUpdate() {
@@ -54,7 +60,8 @@ public class PlayerController : MonoBehaviour {
         CheckGround();
         if (Convert.ToBoolean(CnInputManager.GetAxis("Horizontal")))Run();
         if (isGrounded&& CnInputManager.GetButtonDown("Jump"))Jump();
-        if (CnInputManager.GetButtonDown("Attack")) Attack();
+        if (CnInputManager.GetButton("Attack")) Shot();
+     
 
     }
 
@@ -73,18 +80,24 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    private void Attack()
+    private void Shot()
     {
-       
-        State = CharState.atack;
-        Vector3 position = transform.position;
-        position.y += 1.5F;
-        //position.z = -1.5F;
-        FireBallController newFire = Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
-        newFire.Direction = newFire.transform.right*(mySpriteRenderer.flipX ? -1.0F : 1.0F);
+        if (shotsTimeCounter <= 0)
+        {      
+            Vector3 position = transform.position;
+            position.y += 1.5F;
+            FireBallController newFire = Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
+            newFire.Direction = newFire.transform.right * (mySpriteRenderer.flipX ? -1.0F : 1.0F);
+            shotsTimeCounter = shotsTime;
+            State = CharState.atack;
+        }
+        shotsTimeCounter -= Time.deltaTime;
+      
+    }
+    
                  
 
-    }
+    
 
     public void CheckGround()
     {

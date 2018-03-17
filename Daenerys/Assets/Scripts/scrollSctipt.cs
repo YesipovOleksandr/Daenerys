@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrollSctipt : MonoBehaviour {
+public class ScrollSctipt : MonoBehaviour {
 
    public Material Layer1;
 
@@ -11,6 +11,9 @@ public class scrollSctipt : MonoBehaviour {
 
     public Material Layer3;
 
+    public Material Layer4;
+
+    public Material Layer5;
     public Transform target;
 
 
@@ -36,6 +39,8 @@ public class scrollSctipt : MonoBehaviour {
         Layer1.mainTextureOffset = new Vector2(Time.time * speed / 2, 0F);
         Layer2.mainTextureOffset = new Vector2(target.position.x*speed*2*Time.deltaTime, 0F);
         Layer3.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
-     
+        Layer4.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
+        Layer5.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed/2, 0F);
+
     }
 }

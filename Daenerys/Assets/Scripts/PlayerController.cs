@@ -69,9 +69,9 @@ public class PlayerController : MonoBehaviour {
 
 
         //фича высоко не прыгать
-        if (gameObject.transform.position.y >= 3.000000F)
+        if (gameObject.transform.position.y >= 5.500000F)
         {
-            gameObject.transform.position =new Vector2(gameObject.transform.position.x, 3.000000F);
+            gameObject.transform.position =new Vector2(gameObject.transform.position.x, 5.500000F );
         }
     }
 
@@ -86,7 +86,16 @@ public class PlayerController : MonoBehaviour {
 
     private void Jump()
     {
-       GetComponent<Rigidbody2D>().velocity=new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump);   
+        //если ты высоко -прыгай ниже
+        if (transform.position.y >= 0.5F)
+        {
+           
+            GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump/2);
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump);
+        }
     }
 
     //стрельба
@@ -113,7 +122,11 @@ public class PlayerController : MonoBehaviour {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300));
             health.TakeDamage(30);       
         }
-        if(other.tag== "health")
+        if (other.tag == "Asteroid")
+        {
+            health.TakeDamage(30);
+        }
+        if (other.tag== "health")
         {
             health.AddHealth(25);
             Destroy(other.gameObject);

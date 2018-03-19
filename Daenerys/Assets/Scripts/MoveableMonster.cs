@@ -77,16 +77,20 @@ public class MoveableMonster : MonoBehaviour
             if (lifes <= 0)
             {
                 Destroy(gameObject, DamageTime);
-
+                //рандомные деньги 
                 var random = Random.Range(1, 5);
                 for (var i = 0; i < random; i++)
                 {
                     Instantiate(coin, new Vector3(Random.Range(transform.position.x - 2, transform.position.x + 2), -1F, 0F), Quaternion.identity);
                 }
+                //рандомные жизни
                 if (random == 1 || random == 4)
                 {
                     Instantiate(health, new Vector3(Random.Range(transform.position.x - 2, transform.position.x + 2), -1F, 0F), Quaternion.identity);
                 }
+
+                SpecialEffectsHelper.Instance.Explosion(transform.position);
+
             }
         }
     }

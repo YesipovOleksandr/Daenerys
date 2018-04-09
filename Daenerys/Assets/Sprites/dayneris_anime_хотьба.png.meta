@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: 0b6099b07b77f6044bab4a7b968b1e44
+timeCreated: 1523016515
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_0"
+    21300002: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_1"
+    21300004: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_2"
+    21300006: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_3"
+    21300008: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_4"
+    21300010: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_5"
+    21300012: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_6"
+    21300014: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_7"
+    21300016: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_8"
+    21300018: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_9"
+    21300020: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_10"
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_0"
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 84
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_1"
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 82
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_2"
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 82
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_3"
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 85
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_4"
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 88
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_5"
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 80
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_6"
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 87
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_7"
+      rect:
+        serializedVersion: 2
+        x: 2409
+        y: 82
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_8"
+      rect:
+        serializedVersion: 2
+        x: 2795
+        y: 89
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_9"
+      rect:
+        serializedVersion: 2
+        x: 3197
+        y: 87
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: "dayneris_anime_\u0445\u043E\u0442\u044C\u0431\u0430_10"
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 92
+        width: 257
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

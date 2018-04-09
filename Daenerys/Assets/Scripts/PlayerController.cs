@@ -7,8 +7,11 @@ using UnityEngine;
 public enum CharState
 {
     stoping,
+    dance,
     run,
-    atack
+    atack,
+    jump
+
 }
 public class PlayerController : MonoBehaviour {
 
@@ -29,11 +32,18 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     private SpriteRenderer mySpriteRenderer;
 
-    //огненный шар
-    FireBallController FireBall;
-    //время между выстрелами 
-    public float shotsTime;
-    private float shotsTimeCounter;
+
+    //с какой стороны бьет яйцом
+    private GameObject CircleColaiderRights;
+    private GameObject CircleColaiderLeft;
+    ////огненный шар
+    //FireBallController FireBall;
+    ////время между выстрелами 
+    //public float shotsTime;
+    //private float shotsTimeCounter;
+
+    //время между танцами 
+    public float danceTime;
 
     private CharState State
     {
@@ -44,26 +54,43 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         animator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        shotsTimeCounter = 0;
-      
+        //shotsTimeCounter = 0;
+        danceTime = 3F;
     }
  
     private void Awake()
-    {       
-        FireBall = Resources.Load<FireBallController>("FireBall");   
+    {
+        CircleColaiderRights =GameObject.Find("CircleColaiderRights");
+        CircleColaiderLeft = GameObject.Find("CircleColaiderLeft");
+        //FireBall = Resources.Load<FireBallController>("FireBall");   
     }
 
     void FixedUpdate() {
-        
-     State = CharState.stoping;
+
+        CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = false;
+        CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = false;
      
+
+        //анимация бездействия не слишком часто
+        State = CharState.stoping;
+
+        if (State == CharState.stoping)
+        {
+            danceTime -= Time.deltaTime;
+        }
+        if (danceTime <= 0)
+        {
+            State = CharState.dance;
+
+        }
+
         CheckGround();
         if (Convert.ToBoolean(CnInputManager.GetAxis("Horizontal")))Run();
         if (isGrounded&& CnInputManager.GetButtonDown("Jump"))Jump();
-        if (CnInputManager.GetButtonDown("Attack")) Shoot();
+        if (CnInputManager.GetButton("Attack")) Shoot();
 
-        //чтобы часто не стрелять
-        shotsTimeCounter -= Time.deltaTime;
+        ////чтобы часто не стрелять
+        //shotsTimeCounter -= Time.deltaTime;
 
      
 
@@ -77,11 +104,12 @@ public class PlayerController : MonoBehaviour {
 
     private void Run()
     {
+        if (isGrounded) State = CharState.run;
         Vector3 position = new Vector3(CnInputManager.GetAxis("Horizontal"), 0f);
         transform.position += position * speed * Time.deltaTime;
-        mySpriteRenderer.flipX = position.x < 0.0F;    
-        State = CharState.run;
-        
+        mySpriteRenderer.flipX = position.x < 0.0F;
+
+        danceTime = 3;
     }
 
     private void Jump()
@@ -96,22 +124,32 @@ public class PlayerController : MonoBehaviour {
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump);
         }
+       
     }
 
     //стрельба
     private void Shoot()
-    {      
-        if (shotsTimeCounter <= 0)
-        {      
-            Vector3 position = transform.position;
-            position.y += 1.5F;
-            FireBallController newFire = Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
-            newFire.Direction = newFire.transform.right * (mySpriteRenderer.flipX ? -1.0F : 1.0F);
-            shotsTimeCounter = shotsTime;
-            State = CharState.atack;
+    {
+        //if (shotsTimeCounter <= 0)
+        //{      
+        //Vector3 position = transform.position;
+        //position.y += 1.5F;
+        //FireBallController newFire = Instantiate(FireBall, position, FireBall.transform.rotation) as FireBallController;
+        //newFire.Direction = newFire.transform.right * (mySpriteRenderer.flipX ? -1.0F : 1.0F);
+        //shotsTimeCounter = shotsTime;
+        //}
+        if (mySpriteRenderer.flipX == true)
+        {
+            CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = true;
         }
-        
-      
+        else
+        {
+            CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = true;
+        }
+
+        State = CharState.atack;
+        danceTime = 3;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -150,5 +188,6 @@ public class PlayerController : MonoBehaviour {
     public void CheckGround()
     {
       isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position,0.3F, whatIsGround);
+        if (!isGrounded) State = CharState.jump;
     }
 }

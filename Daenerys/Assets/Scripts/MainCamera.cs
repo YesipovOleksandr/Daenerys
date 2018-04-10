@@ -24,10 +24,10 @@ public class MainCamera : MonoBehaviour {
             position.x =0;
         }
         //граница справа
-        if (position.x >= 50)
-        {
-            position.x = 50;
-        }
+        //if (position.x >= 50)
+        //{
+        //    position.x = 50;
+        //}
         transform.position = Vector3.Lerp(transform.position, position, speed * Time.deltaTime);
    
     }

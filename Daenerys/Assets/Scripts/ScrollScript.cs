@@ -5,15 +5,8 @@ using UnityEngine;
 public class ScrollScript : MonoBehaviour
 {
 
-    public Material Layer1;
+    public Material [] Layers ;
 
-    public Material Layer2;
-
-    public Material Layer3;
-
-    public Material Layer4;
-
-    public Material Layer5;
     public Transform target;
 
 
@@ -38,11 +31,11 @@ public class ScrollScript : MonoBehaviour
         //      Layer1.mainTextureOffset = new Vector2(Time.time * speed / 3, 0F);
         //  }
         // print(target.position.x);
-        Layer1.mainTextureOffset = new Vector2(Time.time * speed / 2, 0F);
-        Layer2.mainTextureOffset = new Vector2(target.position.x * speed * 2 * Time.deltaTime, 0F);
-        Layer3.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
-        Layer4.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
-        Layer5.mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed / 2, 0F);
+        Layers[0].mainTextureOffset = new Vector2(Time.time * speed / 2, 0F);
+        Layers[1].mainTextureOffset = new Vector2(target.position.x * speed * 2 * Time.deltaTime, 0F);
+        Layers[2].mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
+        Layers[3].mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed, 0F);
+        Layers[4].mainTextureOffset = new Vector2(target.position.x * Time.deltaTime * speed / 2, 0F);
 
     }
 }

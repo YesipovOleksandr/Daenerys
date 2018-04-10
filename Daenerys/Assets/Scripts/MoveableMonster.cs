@@ -44,7 +44,7 @@ public class MoveableMonster : MonoBehaviour
         animator = GetComponent<Animator>();
         direction = transform.right;
         //стрельба 
-        InvokeRepeating("Shoot", 5F, 1F);
+        InvokeRepeating("Shoot", 5F, 3F);
     }
 
     protected void FixedUpdate()

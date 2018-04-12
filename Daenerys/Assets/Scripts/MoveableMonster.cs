@@ -63,17 +63,11 @@ public class MoveableMonster : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
             direction *= -1.0F;
-    }
-
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        FireBallController fireBall = other.GetComponent<FireBallController>();
-        if (fireBall)
+        if (other.tag == "Player")
         {
             lifes--;
             TimeDamageCount = DamageTime;
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             if (lifes <= 0)
             {
                 Destroy(gameObject, DamageTime);
@@ -93,6 +87,14 @@ public class MoveableMonster : MonoBehaviour
 
             }
         }
+
+        }
+
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+       
+        
     }
 
   

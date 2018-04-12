@@ -15,8 +15,10 @@ public enum CharState
 }
 public class PlayerController : MonoBehaviour {
 
-    public int lifes = 3;
-    public int coin = 0;
+    // public int lifes = 3;
+    // public int coin = 0;
+    public AudioSource KichAudio;
+    public AudioSource KichAudio2;
 
     public float speed = 3.0F;
     public float jump = 5.0F;
@@ -34,8 +36,10 @@ public class PlayerController : MonoBehaviour {
 
 
     //с какой стороны бьет яйцом
-    private GameObject CircleColaiderRights;
-    private GameObject CircleColaiderLeft;
+    //private GameObject CircleColaiderRights;
+    //private GameObject CircleColaiderLeft;
+    public CircleCollider2D CircleColaiderRights;
+    public CircleCollider2D CircleColaiderLeft;
     ////огненный шар
     //FireBallController FireBall;
     ////время между выстрелами 
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 
     //время между танцами 
     public float danceTime;
+    //время между ударами
+    public float attackcd;
 
     private CharState State
     {
@@ -56,21 +62,21 @@ public class PlayerController : MonoBehaviour {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         //shotsTimeCounter = 0;
         danceTime = 3F;
+        attackcd = 0.5F;
     }
  
     private void Awake()
     {
-        CircleColaiderRights =GameObject.Find("CircleColaiderRights");
-        CircleColaiderLeft = GameObject.Find("CircleColaiderLeft");
+        //KichAudio = GetComponent<AudioSource>();
+        //KichAudio2 = GetComponent<AudioSource>();
+        //CircleColaiderRights =GameObject.Find("CircleColaiderRights");
+        //CircleColaiderLeft = GameObject.Find("CircleColaiderLeft");
         //FireBall = Resources.Load<FireBallController>("FireBall");   
     }
 
     void FixedUpdate() {
 
-        CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = false;
-        CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = false;
-     
-
+       
         //анимация бездействия не слишком часто
         State = CharState.stoping;
 
@@ -85,9 +91,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         CheckGround();
+
         if (Convert.ToBoolean(CnInputManager.GetAxis("Horizontal")))Run();
         if (isGrounded&& CnInputManager.GetButtonDown("Jump"))Jump();
-        if (CnInputManager.GetButton("Attack")) Shoot();
+        if (CnInputManager.GetButtonDown("Attack")) Shoot();
 
         ////чтобы часто не стрелять
         //shotsTimeCounter -= Time.deltaTime;
@@ -115,15 +122,15 @@ public class PlayerController : MonoBehaviour {
     private void Jump()
     {
         //если ты высоко -прыгай ниже
-        if (transform.position.y >= 0.5F)
-        {
+        //if (transform.position.y >= 0.5F)
+        //{
            
-            GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump/2);
-        }
-        else
-        {
+        //    GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump/2);
+        //}
+        //else
+        //{
             GetComponent<Rigidbody2D>().velocity = new Vector2(mySpriteRenderer.flipX ? -2.0F : 2.0F, jump);
-        }
+      //  }
        
     }
 
@@ -138,22 +145,48 @@ public class PlayerController : MonoBehaviour {
         //newFire.Direction = newFire.transform.right * (mySpriteRenderer.flipX ? -1.0F : 1.0F);
         //shotsTimeCounter = shotsTime;
         //}
-        if (mySpriteRenderer.flipX == true)
+ 
+            if (mySpriteRenderer.flipX == true)
+            {
+            //CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = true;
+            CircleColaiderLeft.enabled = true;
+            Invoke("OfCircleColaiderLeft", 1);
+            }
+            else
+            {
+            CircleColaiderRights.enabled = true;
+            //CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = true;
+            Invoke("OfCircleColaiderRights", 1);
+        }
+        var random = UnityEngine.Random.Range(0, 2);
+        if (random == 1)
         {
-            CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = true;
+            KichAudio.Play();
         }
         else
         {
-            CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = true;
+            KichAudio2.Play();
         }
 
         State = CharState.atack;
         danceTime = 3;
+    
+    }
 
+    public void OfCircleColaiderLeft()
+    {
+        CircleColaiderLeft.enabled = false;
+        //CircleColaiderLeft.GetComponent<CircleCollider2D>().enabled = false;
+    }
+    public void OfCircleColaiderRights()
+    {
+        CircleColaiderRights.enabled = false;
+        //CircleColaiderRights.GetComponent<CircleCollider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+    
         BulletController bullet = other.GetComponent<BulletController>();
         if (bullet)
         {

@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 58688397713253134}
   m_Layer: 0
   m_Name: CircleColaiderRights
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   danceTime: 0
+  attackcd: 0
 --- !u!212 &212570450435272730
 SpriteRenderer:
   m_ObjectHideFlags: 1

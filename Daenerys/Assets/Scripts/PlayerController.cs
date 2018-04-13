@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     // public int lifes = 3;
     // public int coin = 0;
+    //музыка
     public AudioSource KichAudio;
     public AudioSource KichAudio2;
 

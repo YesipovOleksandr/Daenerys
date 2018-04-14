@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
+public enum DragonState
+{
+    run,
+    damage
 
+}
 
 public class DragonMonster : MonoBehaviour
 {
 
-    public enum EnemyState
-    {
-        run,
-        damage
-
-    }
-
-    private int lifes = 3;
+        private int lifes = 3;
         public float speed = 5.0F;
         private Animator animator;
         private Vector3 direction;
@@ -36,9 +34,9 @@ public class DragonMonster : MonoBehaviour
             coin = Resources.Load<GameObject>("Coin");
             health = Resources.Load<GameObject>("Health");
         }
-        private EnemyState State
+        private DragonState State
         {
-            get { return (EnemyState)animator.GetInteger("State"); }
+            get { return (DragonState)animator.GetInteger("State"); }
             set { animator.SetInteger("State", (int)value); }
         }
         protected void Start()
@@ -54,11 +52,11 @@ public class DragonMonster : MonoBehaviour
         {
             if (TimeDamageCount <= 0)
             {
-                State = EnemyState.run;
+                State = DragonState.run;
             }
             else
             {
-                State = EnemyState.damage;
+                State = DragonState.damage;
             }
             Move();
         }

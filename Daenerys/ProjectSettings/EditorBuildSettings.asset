@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Daenerys/Level1.unity
-    guid: 1bb391bb9f3df6848a729837e11d5f8c
+    path: Assets/Scenes/Menu/Menu.unity
+    guid: 15b151f7d6e52664b849feca6ad9cd6f
   - enabled: 1
-    path: Assets/Scenes/Darth Vader/Level1.unity
+    path: Assets/Scenes/Daenerys/BrightSide.unity
+    guid: 49732e1b0a5795141912122c2d346d1e
+  - enabled: 1
+    path: Assets/Scenes/Darth Vader/DarkSide.unity
     guid: 00000000000000000000000000000000

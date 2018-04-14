@@ -54,5 +54,8 @@ public class Health : MonoBehaviour {
         string sceneName = SceneManager.GetActiveScene().name;
         // Загружаем её саму родимую
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        //монетки обнуляем
+      
+        PlayerPrefs.DeleteKey("Coin");
     }
 }

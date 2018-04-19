@@ -8,6 +8,10 @@ public class MainMenu : MonoBehaviour {
 
     public AudioSource DarkSideAudio;
     public AudioSource BrightAudio;
+
+
+  
+
     public void DarkSide()
     {
         DarkSideAudio.Play();

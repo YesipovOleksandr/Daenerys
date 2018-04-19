@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
-    public float curHealth = 100;
+    public float curHealth = 200;
     public GameObject healtObj;
     public Text heathText;
 
    
 
     void Update () {
-        healtObj.transform.localScale = new Vector3(curHealth / 100, 1, 1);
+        healtObj.transform.localScale = new Vector3(curHealth / 200, 1, 1);
         heathText.text = "+" + curHealth.ToString("0");
 
-        if (curHealth >= 100)
+        if (curHealth >= 200)
         {
-            curHealth = 100;
+            curHealth = 200;
         }
 
         if (curHealth < 0)
@@ -34,9 +34,9 @@ public class Health : MonoBehaviour {
         float allHealth = curHealth + health;
 
 
-        if (allHealth >= 100)
+        if (allHealth >= 200)
         {
-            curHealth = 100;
+            curHealth = 200;
            
         }
         else

@@ -24,9 +24,8 @@ public class EnemyDarth : MonoBehaviour {
     //время длительности анимации получения урона
     private float TimeDamageCount;
     private float DamageTime = 0.5F;
-
-    public CircleCollider2D CircleColaiderRights;
-    public CircleCollider2D CircleColaiderLeft;
+    //време до атаки
+    private float attackTime=1F;
 
     protected void Awake()
     {
@@ -43,12 +42,26 @@ public class EnemyDarth : MonoBehaviour {
         TimeDamageCount = 0;
         animator = GetComponent<Animator>();
         direction = transform.right;
-        //стрельба 
-        InvokeRepeating("Hit", 2F, 3F);
+        //Атака
+        // InvokeRepeating("Hit", 0F, 3F);
+        StartCoroutine(TestCoroutine());
+
+    }
+
+    IEnumerator TestCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2F);
+            attackTime = 1F;
+          
+        }
     }
 
     protected void FixedUpdate()
     {
+       
+      
         if (TimeDamageCount <= 0)
         {
             State = EnemyStateDarth.run;
@@ -57,8 +70,20 @@ public class EnemyDarth : MonoBehaviour {
         {
             State = EnemyStateDarth.damage;
         }
+
+        if (State == EnemyStateDarth.run)
+        {
+            attackTime -= Time.deltaTime;
+        }
+        if (attackTime <= 0)
+        {
+            State = EnemyStateDarth.attack;
+        }
+
         Move();
     }
+
+   
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -97,19 +122,20 @@ public class EnemyDarth : MonoBehaviour {
     }
 
 
-    private void Hit()
-    {
-        if (sprite.flipX)
-        {
+  //  private void Hit()
+    //{
+      
+    //    if (sprite.flipX)
+    //    {
 
-            CircleColaiderLeft.enabled = true;
-            CircleColaiderRights.enabled = false;
-        }
-        else
-        {
-            CircleColaiderRights.enabled = true;
-            CircleColaiderLeft.enabled = false;
-        }
+    //        CircleColaiderLeft.enabled = true;
+    //        CircleColaiderRights.enabled = false;
+    //    }
+    //    else
+    //    {
+    //        CircleColaiderRights.enabled = true;
+    //        CircleColaiderLeft.enabled = false;
+    //    }
         
-    }
+  //  }
 }

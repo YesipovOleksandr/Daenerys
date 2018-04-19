@@ -398,7 +398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3165435, y: 0.17471503}
   m_AnchorMax: {x: 0.679, y: 0.344}
-  m_AnchoredPosition: {x: 5.3999996, y: 5.9999924}
+  m_AnchoredPosition: {x: 5.3999996, y: 5.9999847}
   m_SizeDelta: {x: 15.700012, y: 1.6000061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92455620
@@ -1793,7 +1793,7 @@ GameObject:
   - component: {fileID: 454655156}
   m_Layer: 0
   m_Name: CircleColaiderLeft
-  m_TagString: Enemy
+  m_TagString: Darth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1819,7 +1819,7 @@ CircleCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 454655154}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -3137,7 +3137,7 @@ GameObject:
   - component: {fileID: 824661747}
   m_Layer: 0
   m_Name: EnemyDarth
-  m_TagString: Enemy
+  m_TagString: Darth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3188,8 +3188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifes: 20
   speed: 5
-  CircleColaiderRights: {fileID: 1583569276}
-  CircleColaiderLeft: {fileID: 454655156}
 --- !u!61 &824661749
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4313,9 +4311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096741002}
   - component: {fileID: 1096741006}
-  - component: {fileID: 1096741005}
   - component: {fileID: 1096741004}
-  - component: {fileID: 1096741003}
   - component: {fileID: 1096741007}
   m_Layer: 5
   m_Name: PauseMenu
@@ -4340,22 +4336,10 @@ RectTransform:
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 540}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.47699}
+  m_SizeDelta: {x: 0, y: -0.95398}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1096741003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114151598774645512, guid: 50bacda4d11fcbf4aac25b94fd99c2d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1096741001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1096741004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4373,28 +4357,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1096741005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114322006514217796, guid: 50bacda4d11fcbf4aac25b94fd99c2d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1096741001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!223 &1096741006
 Canvas:
   m_ObjectHideFlags: 0
@@ -4774,7 +4736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3165435, y: 0.846}
   m_AnchorMax: {x: 0.679, y: 1}
-  m_AnchoredPosition: {x: 2.0000305, y: 8}
+  m_AnchoredPosition: {x: 2.0000305, y: 7.9999924}
   m_SizeDelta: {x: 8.700012, y: 21.299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301295331
@@ -6155,7 +6117,7 @@ GameObject:
   - component: {fileID: 1583569276}
   m_Layer: 0
   m_Name: CircleColaiderRights
-  m_TagString: Enemy
+  m_TagString: Darth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6181,7 +6143,7 @@ CircleCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583569274}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -7538,6 +7500,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114631966901174734, guid: 5642eef31cc415542973624064b3d61f,
+        type: 2}
+      propertyPath: curHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 223173209378559702, guid: 5642eef31cc415542973624064b3d61f,
+        type: 2}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5642eef31cc415542973624064b3d61f, type: 2}

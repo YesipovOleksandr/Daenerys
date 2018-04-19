@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour {
     //private float shotsTimeCounter;
 
     //время между танцами 
-    public float danceTime;
+    private float danceTime;
     //время между ударами
-    public float attackcd;
+    private float attackcd;
 
     private CharState State
     {
@@ -211,11 +211,17 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Enemy")
-        {       
+        {         
             GetComponent<Rigidbody2D>().AddForce(new Vector2(mySpriteRenderer.flipX ? 300 : -300,300));
             health.TakeDamage(20);
         }
-        
+
+        if (coll.gameObject.tag == "Darth")
+        {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(mySpriteRenderer.flipX ? 600 : -600, 400));
+            health.TakeDamage(30);
+        }
+
     }
 
     //проверка на землю

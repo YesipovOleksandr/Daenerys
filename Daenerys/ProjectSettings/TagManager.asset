@@ -9,6 +9,7 @@ TagManager:
   - health
   - Enemy
   - Asteroid
+  - Darth
   layers:
   - Default
   - TransparentFX

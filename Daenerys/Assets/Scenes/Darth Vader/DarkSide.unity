@@ -4187,7 +4187,7 @@ Prefab:
       objectReference: {fileID: 405857550}
     - target: {fileID: 1815240830269978, guid: 0922e45c447c2ff46bea776a5c642237, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0922e45c447c2ff46bea776a5c642237, type: 2}
